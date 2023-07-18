@@ -1,34 +1,50 @@
 // variables
 let fact: string = '';
+let imgSrc: string = '';
 
 //HTML elements
 const factText = document.querySelector('#fact-text') as HTMLParagraphElement;
+const catImage = document.querySelector("#cat-image") as HTMLImageElement;
 const newFactButton = document.querySelector('#new-fact') as HTMLButtonElement;
 
-console.log(factText, newFactButton)
+// updating text
+const fetchTextData = async () => {
+    let responseT = await fetch('https://catfact.ninja/fact?max_length=140')
+    let dataT = await responseT.json();
 
-// functions
-const fetchData = async () => {
-    let response = await fetch('https://catfact.ninja/fact?max_length=140')
-    let data = await response.json();
-
-    return data;
+    return dataT;
 }
 
 function updateText(){
-    console.log("updateText starts")
-
-    let updateTextBool: boolean = false;
-    
-    fetchData().then(data => {
-        console.log("fetching data...")
+    fetchTextData().then(data => {
         fact = data.fact;
         factText.innerText = fact;
-        updateTextBool = false;
+    })
+}
+
+// updating image
+const fetchImageData = async () => {
+    let responseI = await fetch('https://api.thecatapi.com/v1/images/search')
+    let dataI = await responseI.json();
+
+    return dataI;
+}
+
+function updateImage(){
+    console.log("updateImage starts")
+
+    fetchImageData().then(data => {
+        console.log("fetching data...")
+        imgSrc = data[0].url;
+        catImage.src = imgSrc;
     })
 }
 
 // event listenery
 newFactButton.addEventListener('click', () => {
     updateText();
+    updateImage();
 })
+
+updateText();
+updateImage();

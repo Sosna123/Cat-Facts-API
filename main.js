@@ -37,36 +37,59 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 // variables
 var fact = '';
+var imgSrc = '';
 //HTML elements
 var factText = document.querySelector('#fact-text');
+var catImage = document.querySelector("#cat-image");
 var newFactButton = document.querySelector('#new-fact');
-console.log(factText, newFactButton);
-// functions
-var fetchData = function () { return __awaiter(_this, void 0, void 0, function () {
-    var response, data;
+// updating text
+var fetchTextData = function () { return __awaiter(_this, void 0, void 0, function () {
+    var responseT, dataT;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, fetch('https://catfact.ninja/fact?max_length=140')];
             case 1:
-                response = _a.sent();
-                return [4 /*yield*/, response.json()];
+                responseT = _a.sent();
+                return [4 /*yield*/, responseT.json()];
             case 2:
-                data = _a.sent();
-                return [2 /*return*/, data];
+                dataT = _a.sent();
+                return [2 /*return*/, dataT];
         }
     });
 }); };
 function updateText() {
-    console.log("updateText starts");
-    var updateTextBool = false;
-    fetchData().then(function (data) {
-        console.log("fetching data...");
+    fetchTextData().then(function (data) {
         fact = data.fact;
         factText.innerText = fact;
-        updateTextBool = false;
+    });
+}
+// updating image
+var fetchImageData = function () { return __awaiter(_this, void 0, void 0, function () {
+    var responseI, dataI;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, fetch('https://api.thecatapi.com/v1/images/search')];
+            case 1:
+                responseI = _a.sent();
+                return [4 /*yield*/, responseI.json()];
+            case 2:
+                dataI = _a.sent();
+                return [2 /*return*/, dataI];
+        }
+    });
+}); };
+function updateImage() {
+    console.log("updateImage starts");
+    fetchImageData().then(function (data) {
+        console.log("fetching data...");
+        imgSrc = data[0].url;
+        catImage.src = imgSrc;
     });
 }
 // event listenery
 newFactButton.addEventListener('click', function () {
     updateText();
+    updateImage();
 });
+updateText();
+updateImage();
