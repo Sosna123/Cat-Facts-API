@@ -90,7 +90,6 @@ newFactButton.addEventListener('click', function () {
     updateImage();
 });
 document.addEventListener("keypress", function (e) {
-    console.log(e);
     if (e.code === "Space") {
         updateText();
         updateImage();

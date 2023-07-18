@@ -6,7 +6,7 @@
 body{
     margin: 0px;
     padding: 0px;
-    height: 100%;
+    height: 800px;
     width: 100%;
     background-image: url('https://cdn.wallpapersafari.com/96/73/EL7Toy.jpg');
     background-repeat: no-repeat;
@@ -14,18 +14,26 @@ body{
 
 div#container{
     background-color: rgba(0, 0, 0, 0.8);
-    width: 700px;
-    height: 700px;
-    margin: auto;
-    margin-top: 100px;
+    width: 750px;
+    height: 750px;
     border-radius: 20px;
+
+    /* center */
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 img#cat-image{
-    max-height: 500px;
-    max-width: 500px;
+    object-fit: contain;
+    height: 500px;
+    width: 500px;
     margin: auto;
     display: block;
+    border-radius: 1em;
 }
 
 p#fact-text{

@@ -44,7 +44,6 @@ newFactButton.addEventListener('click', () => {
 })
 
 document.addEventListener("keypress", (e) => {
-    console.log(e);
     if(e.code === "Space"){
         updateText();
         updateImage();
