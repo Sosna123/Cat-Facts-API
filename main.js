@@ -79,9 +79,7 @@ var fetchImageData = function () { return __awaiter(_this, void 0, void 0, funct
     });
 }); };
 function updateImage() {
-    console.log("updateImage starts");
     fetchImageData().then(function (data) {
-        console.log("fetching data...");
         imgSrc = data[0].url;
         catImage.src = imgSrc;
     });
@@ -90,6 +88,13 @@ function updateImage() {
 newFactButton.addEventListener('click', function () {
     updateText();
     updateImage();
+});
+document.addEventListener("keypress", function (e) {
+    console.log(e);
+    if (e.code === "Space") {
+        updateText();
+        updateImage();
+    }
 });
 updateText();
 updateImage();

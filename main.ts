@@ -31,10 +31,7 @@ const fetchImageData = async () => {
 }
 
 function updateImage(){
-    console.log("updateImage starts")
-
     fetchImageData().then(data => {
-        console.log("fetching data...")
         imgSrc = data[0].url;
         catImage.src = imgSrc;
     })
@@ -44,6 +41,14 @@ function updateImage(){
 newFactButton.addEventListener('click', () => {
     updateText();
     updateImage();
+})
+
+document.addEventListener("keypress", (e) => {
+    console.log(e);
+    if(e.code === "Space"){
+        updateText();
+        updateImage();
+    }
 })
 
 updateText();
