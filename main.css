@@ -1,0 +1,46 @@
+*{
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    background-image: url('https://cdn.wallpapersafari.com/96/73/EL7Toy.jpg');
+    background-repeat: no-repeat;
+}
+
+div#container{
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 700px;
+    height: 700px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 20px;
+}
+
+img#cat-image{
+    max-height: 500px;
+    max-width: 500px;
+    margin: auto;
+    display: block;
+}
+
+p#fact-text{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+button#new-fact{
+    padding: 10px;
+    margin: auto;
+    display: block;
+    color: white;
+    background-color: grey;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: grey;
+}
